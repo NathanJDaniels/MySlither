@@ -91,7 +91,7 @@ final class MySlitherJFrame extends JFrame {
     private final JComboBox<String> snake;
     private final JCheckBox useRandomServer;
     private final JToggleButton connect;
-    private final JLabel rank, kills;
+    private final JLabel rank, kills, time;
     private final JSplitPane rightSplitPane, fullSplitPane;
     private final JTextArea log;
     private final JScrollBar logScrollBar;
@@ -180,6 +180,8 @@ final class MySlitherJFrame extends JFrame {
 
         kills = new JLabel();
 
+        time = new JLabel();
+
         settings.add(new JLabel("server:"),
             new GridBagConstraints(0, 0, 1, 1, 0, 0, GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(2, 2, 2, 2), 0, 0));
         settings.add(server,
@@ -199,12 +201,16 @@ final class MySlitherJFrame extends JFrame {
         settings.add(new JSeparator(SwingConstants.VERTICAL),
             new GridBagConstraints(3, 0, 1, 3, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 6, 0, 6), 0, 0));
         settings.add(new JLabel("kills:"),
-            new GridBagConstraints(4, 1, 1, 1, 0, 0, GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(2, 2, 2, 2), 0, 0));
+            new GridBagConstraints(4, 0, 1, 1, 0, 0, GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(2, 2, 2, 2), 0, 0));
         settings.add(kills,
-            new GridBagConstraints(5, 1, 1, 1, 0, 0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(2, 2, 2, 2), 0, 0));
+            new GridBagConstraints(5, 0, 1, 1, 0, 0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(2, 2, 2, 2), 0, 0));
         settings.add(new JLabel("rank:"),
-            new GridBagConstraints(4, 2, 1, 1, 0, 0, GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(2, 2, 2, 2), 0, 0));
+            new GridBagConstraints(4, 1, 1, 1, 0, 0, GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(2, 2, 2, 2), 0, 0));
         settings.add(rank,
+            new GridBagConstraints(5, 1, 1, 1, 0, 0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(2, 2, 2, 2), 0, 0));
+        settings.add(new JLabel("time:"),
+            new GridBagConstraints(4, 2, 1, 1, 0, 0, GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(2, 2, 2, 2), 0, 0));
+        settings.add(time,
             new GridBagConstraints(5, 2, 1, 1, 0, 0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(2, 2, 2, 2), 0, 0));
 
         JComponent upperRow = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -410,6 +416,7 @@ final class MySlitherJFrame extends JFrame {
             this.model = model;
             rank.setText(null);
             kills.setText(null);
+            time.setText(null);
         }
     }
 
@@ -423,6 +430,10 @@ final class MySlitherJFrame extends JFrame {
 
     void setKills(int newKills) {
         kills.setText(String.valueOf(newKills));
+    }
+
+    void setTime(int newTime) {
+        time.setText(String.valueOf(newTime));
     }
 
     void setHighscoreData(int row, String name, int length, boolean highlighted) {

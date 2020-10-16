@@ -426,7 +426,8 @@ final class MySlitherWebSocketClient extends WebSocketClient {
             double fillAnount = ((data[cursorPosition + 2] << 16) | (data[cursorPosition + 3] << 8) | (data[cursorPosition + 4])) / ANGLE_CONSTANT;
             int nameLength = data[cursorPosition + 6];
             StringBuilder name = new StringBuilder(nameLength);
-            for (int i = 0; i < nameLength && cursorPosition + 7 + i < data.length; i++) {
+            for (int i = 0; i < nameLength && cursorPosition + 7 + i < data.length; i++) 
+            {
                 name.append((char) data[cursorPosition + 7 + i]);
             }
             cursorPosition += 7 + nameLength;
