@@ -1,5 +1,6 @@
 package de.mat2095.my_slither;
 
+import java.lang.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
@@ -432,8 +433,13 @@ final class MySlitherJFrame extends JFrame {
         kills.setText(String.valueOf(newKills));
     }
 
-    void setTime(int newTime) {
-        time.setText(String.valueOf(newTime));
+    //calculates the time since the start of the game
+    //only updates as the rank does
+    //so doesn't go up in one second intervals
+    void setTime(long currentTime, long startTime) {
+        long val = (currentTime - startTime)/1000;
+        double dub = (double)val;
+        time.setText(String.valueOf((Math.abs(dub))));
     }
 
     void setHighscoreData(int row, String name, int length, boolean highlighted) {

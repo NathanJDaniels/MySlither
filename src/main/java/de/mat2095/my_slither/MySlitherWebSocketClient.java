@@ -37,6 +37,7 @@ final class MySlitherWebSocketClient extends WebSocketClient {
     private byte lastAngleContent, angleToBeSent;
     private boolean lastBoostContent;
     private boolean waitingForPong;
+    private long startTime = System.currentTimeMillis();
 
     static {
         HEADER.put("Origin", "http://slither.io");
@@ -416,8 +417,10 @@ final class MySlitherWebSocketClient extends WebSocketClient {
 
         int ownRank = (data[4] << 8) | data[5];
         int playerCount = (data[6] << 8) | data[7];
+        
 
         view.setRank(ownRank, playerCount);
+        view.setTime(System.currentTimeMillis(), this.startTime);
 
         int rank = 0;
         int cursorPosition = 8;
@@ -445,6 +448,7 @@ final class MySlitherWebSocketClient extends WebSocketClient {
         switch (deathReason) {
             case 0:
                 view.log("You died.");
+                //respawn here
                 break;
             case 1:
                 view.log("You've achieved a new record!");
