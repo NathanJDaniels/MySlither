@@ -16,6 +16,9 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import javax.swing.JOptionPane;
+
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.drafts.Draft_6455;
 import org.java_websocket.handshake.ServerHandshake;
@@ -448,6 +451,7 @@ final class MySlitherWebSocketClient extends WebSocketClient {
         switch (deathReason) {
             case 0:
                 view.log("You died.");
+                JOptionPane.showMessageDialog(null, "You died...");
                 //respawn here
                 break;
             case 1:
